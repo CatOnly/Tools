@@ -52,14 +52,14 @@
         rgba[4*i+2] = buffer[3*i+type];
         rgba[4*i+3] = 255;
     }
-
-    return [self imageFromRGBAFormateBuffer:rgba width:width height:height];
+    UIImage *img = [self imageFromRGBAFormateBuffer:rgba width:width height:height];
+    free(rgba);
+    return img;
 }
 
 // BitmapRGBA8 -> UIImage
 + (UIImage *)imageFromRGBFormateBuffer:(unsigned char *)buffer width:(int)width height:(int)height
 {
-    
     unsigned char *rgba = (unsigned char *)malloc(width * height * 4 * sizeof(unsigned char));
     for(int i=0; i < width*height; i++) {
         rgba[4*i]   = buffer[3*i];
@@ -67,7 +67,9 @@
         rgba[4*i+2] = buffer[3*i+2];
         rgba[4*i+3] = 255;
     }
-    return [self imageFromRGBAFormateBuffer:rgba width:width height:height];
+    UIImage *img = [self imageFromRGBAFormateBuffer:rgba width:width height:height];
+    free(rgba);
+    return img;
 }
 
 + (UIImage *)imageRGBFormateDvalueFromOrigin:(unsigned char *)origin newBuffer:(unsigned char *)newBuffer width:(int)width height:(int)height
@@ -80,8 +82,9 @@
         rgba[4*i+2] = newBuffer[3*i+2] - origin[3*i+2];
         rgba[4*i+3] = 255;
     }
-    
-    return [self imageFromRGBAFormateBuffer:rgba width:width height:height];
+    UIImage *img = [self imageFromRGBAFormateBuffer:rgba width:width height:height];
+    free(rgba);
+    return img;
 }
 
 + (UIImage *)imageFromYUVNV12FormatBuffer:(unsigned char *)data imgWidth:(int)imgWidth imgHeight:(int)imgHeight
