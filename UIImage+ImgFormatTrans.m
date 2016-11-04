@@ -51,9 +51,9 @@ void callbackReleaseData(void *info, const void *data, size_t size) {
 {
     unsigned char *rgba = (unsigned char *)malloc(width * height * 4 * sizeof(unsigned char));
     for(int i=0; i < width*height; i++) {
-        rgba[4*i]   = buffer[3*i+type];
-        rgba[4*i+1] = buffer[3*i+type];
-        rgba[4*i+2] = buffer[3*i+type];
+        rgba[4*i]   = abs(newBuffer[3*i] - origin[3*i]);
+        rgba[4*i+1] = abs(newBuffer[3*i+1] - origin[3*i+1]);
+        rgba[4*i+2] = abs(newBuffer[3*i+2] - origin[3*i+2]);
         rgba[4*i+3] = 255;
     }
     UIImage *img = [self imageFromRGBAFormateBuffer:rgba width:width height:height];

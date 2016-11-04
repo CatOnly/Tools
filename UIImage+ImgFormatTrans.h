@@ -16,7 +16,7 @@ typedef enum {
 @interface UIImage (ImgFormatTrans)
 
 /** 根据 RGB 格式的数据创建 UIImage 对象 */
-+ (UIImage *)imageFromRGBFormateBuffer:(unsigned char *)buffer width:(int) width height:(int) height;
++ (UIImage *)imageFromRGBFormateBuffer:(unsigned char *)buffer width:(int) width height:(int)height;
 /** 根据 RGBA 格式的数据创建 UIImage 对象 */
 + (UIImage *)imageFromRGBAFormateBuffer:(unsigned char *)buffer width:(int)width height:(int)height;
 /** 根据 NV12 格式的 YUV 数据创建 UIImage 对象 */
